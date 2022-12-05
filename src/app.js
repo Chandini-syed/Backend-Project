@@ -9,7 +9,7 @@ app.get('/',(req,res)=>{
     res.json('Home Page')
 })
 
-
+// Get the response with an array of subscribers (an Object)
 app.get("/subscribers", (req, res) => { 
     const subscribers = req.params; 
     Subscribers 
@@ -22,6 +22,7 @@ app.get("/subscribers", (req, res) => {
       }); 
   });
 
+  //Get the response with an array of subscribers (an Object with only two fields name and subscribedChannel)
   app.get("/subscribers/names", (req, res) => { 
     Subscribers 
     .find({}).select('-_id -subscribedDate -__v')   
@@ -33,7 +34,7 @@ app.get("/subscribers", (req, res) => {
     }); 
   });
 
-
+// Get the response with a subscriber (an Object) with given id. Response with status code 400 and error message ({message: error message}) if id does not match
   app.get('/subscribers/:id', async (req, res) => {
     const _id =req.params.id
     try{
